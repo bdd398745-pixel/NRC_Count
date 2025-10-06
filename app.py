@@ -125,7 +125,14 @@ m = folium.Map(location=map_center, zoom_start=9)
 
 if st.sidebar.checkbox('Show projection points (pincodes)', value=False):
     for _, r in df_proj.iterrows():
-        folium.CircleMarker(location=[r['lat'], r['lon']], radius=3, fill=True, fill_opacity=0.6, popup=f\"Pincode: {{r.get('pincode','')}}<br>NRC VINs: {{int(r.get('nrc_vin_count',0))}}\"\").add_to(m)
+        folium.CircleMarker(
+    location=[r['lat'], r['lon']],
+    radius=3,
+    fill=True,
+    fill_opacity=0.6,
+    popup=f"Pincode: {r.get('pincode','')}<br>NRC VINs: {int(r.get('nrc_vin_count',0))}"
+).add_to(m)
+
 
 max_vins = summary_df['nrc_vin_count_within_radius'].max() if not summary_df.empty else 0
 for _, r in summary_df.iterrows():
