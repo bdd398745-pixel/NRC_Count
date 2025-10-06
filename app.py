@@ -93,7 +93,7 @@ for _, r in nrc.iterrows():
         color="gray",
         fill=True,
         fill_opacity=0.4,
-        popup=f"Pincode: {r.get('pincode','')}<br>NRC VINs: {int(r.get('nrc vin count',0))}"
+        popup=f"Pincode: {r.get('pincode', '')}<br>NRC VINs: {int(r.get('nrc vin count', 0))}"
     ).add_to(m)
 
 # Plot workshops with bubble proportional to VIN count
